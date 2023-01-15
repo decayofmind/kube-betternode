@@ -81,7 +81,14 @@ func ListNodes(client clientset.Interface) ([]*v1.Node, error) {
 
 	nodes := make([]*v1.Node, 0)
 	for i := range nodeList.Items {
-		nodes = append(nodes, &nodeList.Items[i])
+		node := &nodeList.Items[i]
+
+		if node.Spec.Unschedulable {
+			logrus.Infof("Not evaluating unschedulable node %v", node.Name)
+			continue;
+		}
+
+		nodes = append(nodes, node)
 	}
 	return nodes, nil
 }
