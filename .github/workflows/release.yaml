@@ -8,9 +8,10 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
-  goreleaser:
+  release:
     runs-on: ubuntu-latest
     env:
       REGISTRY: ghcr.io
