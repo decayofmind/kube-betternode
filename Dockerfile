@@ -1,4 +1,6 @@
-FROM golang:1.16.6 as builder
+ARG GO_VERSION
+
+FROM golang:${GO_VERSION} as builder
 
 WORKDIR /build
 
