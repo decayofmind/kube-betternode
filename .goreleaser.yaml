@@ -16,15 +16,7 @@ builds:
       - arm64
 
 checksum:
-  name_template: "checksums.txt"
-
-dockers:
-  - image_templates:
-      - "{{ .Env.REGISTRY }}/{{ .Env.GITHUB_REPOSITORY }}:{{ .Tag }}"
-      - "{{ .Env.REGISTRY }}/{{ .Env.GITHUB_REPOSITORY }}:latest"
-    use: buildx
-    goos: linux
-    goarch: amd64
+  name_template: checksums.txt
 
 changelog:
   sort: asc
