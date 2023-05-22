@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+
+---
+project_name: kube-better-node
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: ./cmd/twiyou
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+
+checksum:
+  name_template: "checksums.txt"
+
+dockers:
+  - image_templates:
+      - "{{ .Env.REGISTRY }}/{{ .Env.GITHUB_REPOSITORY }}:{{ .Tag }}"
+      - "{{ .Env.REGISTRY }}/{{ .Env.GITHUB_REPOSITORY }}:latest"
+    use: buildx
+    goos: linux
+    goarch: amd64
+
+changelog:
+  sort: asc
