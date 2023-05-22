@@ -8,8 +8,7 @@ before:
     - go mod tidy
 
 builds:
-  - main: ./cmd/twiyou
-    goos:
+  - goos:
       - linux
       - darwin
     goarch:
