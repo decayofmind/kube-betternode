@@ -1,5 +1,7 @@
 # kube-better-node
 
+![meme](https://github.com/decayofmind/kube-better-node/assets/4447814/3d64b91d-9107-4ea6-b9b6-66169cbb0597)
+
 This small program doest the only thing [kubernetes-sigs/descheduler](https://github.com/kubernetes-sigs/descheduler) can't do. It will evict Pods to better nodes, based on `preferredDuringSchedulingIgnoredDuringExecution` `nodeAffinity` terms.
 
 ## Why?
