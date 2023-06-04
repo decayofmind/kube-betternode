@@ -49,21 +49,21 @@ func Run(client kubernetes.Interface, dryRun bool, tolerance int) {
 
 		if betterNode != nil {
 			hasPotential = true
-			klog.V(1).InfoS("Found better node candidate for pod", "pod", klog.KObj(pod), "node", klog.KObj(betterNode))
+			klog.InfoS("Found better node candidate for pod", "pod", klog.KObj(pod), "node", klog.KObj(betterNode))
 			if !dryRun {
 				err := client.CoreV1().Pods(pod.Namespace).Delete(context.Background(), pod.Name, metav1.DeleteOptions{})
 				if err != nil {
 					panic(err.Error())
 				}
-				klog.V(1).InfoS("Evicted pod", "pod", klog.KObj(pod))
+				klog.InfoS("Evicted pod", "pod", klog.KObj(pod))
 			} else {
-				klog.V(1).InfoS("Evicted pod (dry run)", "pod", klog.KObj(pod))
+				klog.InfoS("Evicted pod (dry run)", "pod", klog.KObj(pod))
 			}
 		}
 	}
 
 	if !hasPotential {
-		klog.V(1).InfoS("No Pods to evict")
+		klog.InfoS("No Pods to evict")
 	}
 
 }
