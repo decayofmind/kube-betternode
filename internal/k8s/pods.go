@@ -7,6 +7,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/client-go/kubernetes"
+	"k8s.io/klog/v2"
 )
 
 func ListPods(client kubernetes.Interface) ([]*v1.Pod, error) {
@@ -27,6 +28,8 @@ func ListPods(client kubernetes.Interface) ([]*v1.Pod, error) {
 
 		if affinity != nil && affinity.NodeAffinity != nil && affinity.NodeAffinity.PreferredDuringSchedulingIgnoredDuringExecution != nil {
 			pods = append(pods, pod)
+		} else {
+			klog.V(4).InfoS("Skipping pod without PreferredDuringSchedulingIgnoredDuringExecution terms", "pod", klog.KObj(pod))
 		}
 	}
 	return pods, nil
