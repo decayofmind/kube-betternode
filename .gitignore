@@ -1,4 +1,5 @@
 kube-better-node
+coverage*
 
 # Binaries for programs and plugins
 *.exe
