@@ -16,6 +16,6 @@ FROM scratch
 
 USER 1000
 
-COPY --from=0 /buid/kube-better-node /bin/kube-better-node
+COPY --from=0 /build/kube-better-node /bin/kube-better-node
 
 ENTRYPOINT ["/bin/kube-better-node"]
