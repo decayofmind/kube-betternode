@@ -8,7 +8,9 @@ before:
     - go mod tidy
 
 builds:
-  - goos:
+  - main: cmd/kube-better-node/main.go
+    binary: kube-better-node
+    goos:
       - linux
       - darwin
     goarch:
