@@ -42,7 +42,7 @@ func Run(client kubernetes.Interface, dryRun bool, tolerance int) {
 			panic(err.Error())
 		}
 
-		betterNode, _, err := FindBetterNode(pod, curScore, tolerance, nodes)
+		betterNode, _, err := FindBetterNode(client, pod, curScore, tolerance, nodes)
 		if err != nil {
 			panic(err.Error())
 		}

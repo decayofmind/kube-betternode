@@ -34,3 +34,23 @@ func ListPods(client kubernetes.Interface) ([]*v1.Pod, error) {
 	}
 	return pods, nil
 }
+
+func ListPodsOnNode(client kubernetes.Interface, nodeName string) ([]*v1.Pod, error) {
+	fieldSelector, err := fields.ParseSelector("status.phase!=" + string(v1.PodSucceeded) + ",status.phase!=" + string(v1.PodFailed) + ",status.phase!=" + string(v1.PodPending) + ",spec.nodeName=" + nodeName)
+
+	if err != nil {
+		return []*v1.Pod{}, err
+	}
+
+	podList, err := client.CoreV1().Pods(v1.NamespaceAll).List(context.Background(), metav1.ListOptions{FieldSelector: fieldSelector.String()})
+	if err != nil {
+		return []*v1.Pod{}, err
+	}
+
+	pods := make([]*v1.Pod, 0)
+	for i := range podList.Items {
+		pod := &podList.Items[i]
+		pods = append(pods, pod)
+	}
+	return pods, nil
+}
