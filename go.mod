@@ -6,7 +6,7 @@ require (
 	k8s.io/api v0.28.0
 	k8s.io/apimachinery v0.28.0
 	k8s.io/client-go v0.28.0
-	k8s.io/component-helpers v0.27.3
+	k8s.io/component-helpers v0.28.0
 	k8s.io/klog/v2 v2.100.1
 )
 
