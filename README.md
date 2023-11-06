@@ -1,3 +1,8 @@
+# ❗ ARCHIVED ❗
+
+With [#1210](https://github.com/kubernetes-sigs/descheduler/pull/1210) being merged, [kubernetes-sigs/descheduler](https://github.com/kubernetes-sigs/descheduler) now respects `preferredDuringSchedulingIgnoredDuringExecution` term,
+so there's no need to use and maintain this program
+
 # kube-better-node
 
 ![meme](https://github.com/decayofmind/kube-better-node/assets/4447814/3d64b91d-9107-4ea6-b9b6-66169cbb0597)
@@ -7,8 +12,8 @@ This small program does the only thing [kubernetes-sigs/descheduler](https://git
 ### ⚠️ Disclaimer ⚠️
 
 * I have no intention to replicate and follow all Descheduler policies and rules, but feel free to create a PR if something is missing.
-* I do not need functionality provided by this program anymore, however I still see it usefull for exploring the Golang world.
-* Remember, it' a workaround and there's no guarantee that a Pod will be schedulled to a Node you expect it to be.
+* I do not need functionality provided by this program anymore, however I still see it useful for exploring the Golang world.
+* Remember, it' a workaround and there's no guarantee that a Pod will be scheduled to a Node you expect it to be.
 
 ## Why?
 
